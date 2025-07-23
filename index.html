@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIKI STOR | المتجر الأسطوري</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap');
+        
+        :root {
+            --neon-green: #39FF14;
+            --electric-blue: #00FFFF;
+            --hot-pink: #FF00FF;
+            --violet: #FE2C55;
+            --dark-bg: #111;
+            --text-light: #FFF;
+            --tiktok-color: #FE2C55;
+            --gold: #FFD700;
+            --diamond: #b9f2ff;
+        }
+        
+        /* Animations */
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px var(--neon-green), 0 0 10px var(--neon-green); }
+            50% { text-shadow: 0 0 15px var(--neon-green), 0 0 20px var(--neon-green); }
+            100% { text-shadow: 0 0 5px var(--neon-green), 0 0 10px var(--neon-green); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+        
+        @keyframes shine {
+            0% { background-position: -100%; }
+            100% { background-position: 100%; }
+        }
+        
+        @keyframes flicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+                opacity: 1;
+            }
+            20%, 22%, 24%, 55% {
+                opacity: 0.5;
+            }
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Main Styles */
+        body {
+            font-family: 'Tajawal', Arial, sans-serif;
+            background: linear-gradient(-45deg, #111, #222, #111, #222);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            margin: 0;
+            padding: 0;
+            color: var(--text-light);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* Header with 3D Effect */
+        .header-container {
+            perspective: 1000px;
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .header {
+            font-size: 3rem;
+            font-weight: 900;
+            margin: 0 auto;
+            color: var(--neon-green);
+            text-align: center;
+            animation: glow 2s infinite, flicker 3s infinite;
+            padding: 15px 30px;
+            border-bottom: 3px solid var(--hot-pink);
+            display: inline-block;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            background: linear-gradient(to right, 
+                rgba(0,0,0,0.7), 
+                rgba(57, 255, 20, 0.1), 
+                rgba(0,0,0,0.7));
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+        
+        .header::before, .header::after {
+            content: 'KIKI STOR';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 15px 30px;
+            color: rgba(255,255,255,0.1);
+            transform: translateZ(-20px);
+        }
+        
+        .header::after {
+            transform: translateZ(-40px);
+        }
+        
+        .header:hover {
+            transform: rotateY(10deg) rotateX(10deg);
+        }
+        
+        /* Notice with Shine Effect */
+        .notice {
+            background: linear-gradient(to right, 
+                rgba(0,0,0,0.8), 
+                rgba(0, 255, 255, 0.2), 
+                rgba(0,0,0,0.8));
+            border: 1px solid var(--electric-blue);
+            color: var(--electric-blue);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 25px auto;
+            max-width: 600px;
+            animation: pulse 2s infinite, flicker 4s infinite;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+        
+        .notice::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(0, 255, 255, 0.2), 
+                transparent);
+            animation: shine 3s infinite;
+        }
+        
+        /* Section Titles with Ribbon Effect */
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--neon-green);
+            margin: 40px 0 30px;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0 30px 15px;
+            text-shadow: 0 0 10px rgba(57, 255, 20, 0.7);
+        }
+        
+        .section-title::before, .section-title::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            width: 50px;
+            height: 20px;
+            background: var(--hot-pink);
+            clip-path: polygon(0 0, 100% 0, 100% 100%);
+        }
+        
+        .section-title::before {
+            left: -20px;
+            transform: rotate(-45deg) translateX(-50%);
+        }
+        
+        .section-title::after {
+            right: -20px;
+            transform: rotate(45deg) translateX(50%);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, 
+                transparent, 
+                var(--hot-pink), 
+                transparent);
+        }
+        
+        /* Package Container with Grid Layout */
+        .package-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        /* Enhanced Package Cards */
+        .package {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            padding: 25px;
+            border: 2px solid var(--neon-green);
+            transition: all 0.4s ease;
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.4);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+        
+        .tiktok-package {
+            border-color: var(--tiktok-color);
+            box-shadow: 0 0 15px rgba(254, 44, 85, 0.4);
+        }
+        
+        .gold-package {
+            border-color: var(--gold);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+        }
+        
+        .diamond-package {
+            border-color: var(--diamond);
+            box-shadow: 0 0 20px rgba(185, 242, 255, 0.6);
+        }
+        
+        .package::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            z-index: -1;
+            background: linear-gradient(45deg, 
+                var(--neon-green), 
+                var(--electric-blue), 
+                var(--hot-pink), 
+                var(--violet));
+            background-size: 400% 400%;
+            border-radius: 20px;
+            opacity: 0;
+            transition: 0.5s;
+            animation: gradientBG 8s ease infinite;
+        }
+        
+        .tiktok-package::before {
+            background: linear-gradient(45deg, #000000, #FE2C55, #25F4EE);
+        }
+        
+        .gold-package::before {
+            background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700);
+        }
+        
+        .diamond-package::before {
+            background: linear-gradient(45deg, #b9f2ff, #ffffff, #b9f2ff);
+        }
+        
+        .package:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 0 30px rgba(57, 255, 20, 0.8);
+        }
+        
+        .tiktok-package:hover {
+            box-shadow: 0 0 30px rgba(254, 44, 85, 0.8);
+        }
+        
+        .gold-package:hover {
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+        }
+        
+        .diamond-package:hover {
+            box-shadow: 0 0 40px rgba(185, 242, 255, 0.9);
+        }
+        
+        .package:hover::before {
+            opacity: 0.7;
+        }
+        
+        .package-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed var(--hot-pink);
+            position: relative;
+        }
+        
+        .tiktok-package .package-header {
+            border-bottom-color: var(--tiktok-color);
+        }
+        
+        .gold-package .package-header {
+            border-bottom-color: var(--gold);
+        }
+        
+        .diamond-package .package-header {
+            border-bottom-color: var(--diamond);
+        }
+        
+        .package-header::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, 
+                transparent, 
+                rgba(255,255,255,0.5), 
+                transparent);
+        }
+        
+        .package-name {
+            font-size: 1.6rem;
+            color: var(--neon-green);
+            text-shadow: 0 0 8px rgba(57, 255, 20, 0.7);
+            font-weight: 700;
+        }
+        
+        .tiktok-package .package-name {
+            color: var(--tiktok-color);
+            text-shadow: 0 0 8px rgba(254, 44, 85, 0.7);
+        }
+        
+        .gold-package .package-name {
+            color: var(--gold);
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.7);
+        }
+        
+        .diamond-package .package-name {
+            color: var(--diamond);
+            text-shadow: 0 0 10px rgba(185, 242, 255, 0.9);
+        }
+        
+        .package-price {
+            font-size: 1.5rem;
+            color: var(--electric-blue);
+            font-weight: bold;
+            background: rgba(0,0,0,0.5);
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: 1px solid var(--electric-blue);
+        }
+        
+        .tiktok-package .package-price {
+            color: #25F4EE;
+            border-color: #25F4EE;
+        }
+        
+        .gold-package .package-price {
+            color: var(--gold);
+            border-color: var(--gold);
+        }
+        
+        .diamond-package .package-price {
+            color: var(--diamond);
+            border-color: var(--diamond);
+        }
+        
+        .package-content {
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+        }
+        
+        .currency-value {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: var(--hot-pink);
+            margin: 15px 0;
+            text-shadow: 0 0 12px rgba(255, 0, 255, 0.8);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .tiktok-package .currency-value {
+            color: var(--tiktok-color);
+            text-shadow: 0 0 12px rgba(254, 44, 85, 0.8);
+        }
+        
+        .gold-package .currency-value {
+            color: var(--gold);
+            text-shadow: 0 0 12px rgba(255, 215, 0, 0.8);
+        }
+        
+        .diamond-package .currency-value {
+            color: var(--diamond);
+            text-shadow: 0 0 15px rgba(185, 242, 255, 1);
+        }
+        
+        .currency-value::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, 
+                transparent, 
+                currentColor, 
+                transparent);
+        }
+        
+        .package-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--hot-pink);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transform: rotate(15deg);
+            box-shadow: 0 0 10px rgba(255, 0, 255, 0.7);
+            z-index: 1;
+        }
+        
+        .tiktok-badge {
+            background: var(--tiktok-color);
+            box-shadow: 0 0 10px rgba(254, 44, 85, 0.7);
+        }
+        
+        .gold-badge {
+            background: var(--gold);
+            color: black;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+        }
+        
+        .diamond-badge {
+            background: var(--diamond);
+            color: black;
+            box-shadow: 0 0 10px rgba(185, 242, 255, 0.9);
+        }
+        
+        /* Enhanced Buttons */
+        .buy-btn {
+            background: linear-gradient(to right, 
+                var(--neon-green), 
+                var(--electric-blue));
+            color: var(--dark-bg);
+            border: none;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+            transition: all 0.4s ease;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .tiktok-btn {
+            background: linear-gradient(to right, #FE2C55, #25F4EE);
+        }
+        
+        .gold-btn {
+            background: linear-gradient(to right, #FFD700, #FFA500);
+            color: black;
+        }
+        
+        .diamond-btn {
+            background: linear-gradient(to right, #b9f2ff, #ffffff);
+            color: black;
+        }
+        
+        .buy-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(to right, 
+                var(--hot-pink), 
+                var(--violet));
+            transition: all 0.4s ease;
+            z-index: -1;
+        }
+        
+        .tiktok-btn::before {
+            background: linear-gradient(to right, #000000, #FE2C55);
+        }
+        
+        .gold-btn::before {
+            background: linear-gradient(to right, #000000, #FFD700);
+        }
+        
+        .diamond-btn::before {
+            background: linear-gradient(to right, #000000, #b9f2ff);
+        }
+        
+        .buy-btn:hover {
+            color: var(--text-light);
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.8);
+            transform: translateY(-3px);
+        }
+        
+        .tiktok-btn:hover {
+            box-shadow: 0 0 25px rgba(254, 44, 85, 0.8);
+        }
+        
+        .gold-btn:hover {
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+        }
+        
+        .diamond-btn:hover {
+            box-shadow: 0 0 30px rgba(185, 242, 255, 0.9);
+        }
+        
+        .buy-btn:hover::before {
+            width: 100%;
+        }
+        
+        .buy-btn i {
+            margin-left: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .buy-btn:hover i {
+            transform: rotate(360deg);
+        }
+        
+        /* Contact Section */
+        .contact {
+            text-align: center;
+            margin: 50px 0 30px;
+            font-size: 1.3rem;
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(to right, 
+                transparent, 
+                var(--hot-pink), 
+                transparent);
+        }
+        
+        .whatsapp-btn {
+            background: linear-gradient(to right, #25D366, #128C7E);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            margin-top: 20px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.5);
+            position: relative;
+            overflow: hidden;
+            font-size: 1.2rem;
+        }
+        
+        .whatsapp-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.8);
+        }
+        
+        .whatsapp-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255,255,255,0.2), 
+                transparent);
+            transition: all 0.5s ease;
+        }
+        
+        .whatsapp-btn:hover::before {
+            left: 100%;
+        }
+        
+        .whatsapp-btn i {
+            margin-left: 10px;
+            font-size: 1.5rem;
+            animation: pulse 1.5s infinite;
+        }
+        
+        /* Floating Icons */
+        .floating-icons {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .floating-icon {
+            position: absolute;
+            color: rgba(57, 255, 20, 0.2);
+            animation: float linear infinite;
+            user-select: none;
+        }
+        
+        /* Social Sidebar - Enhanced */
+        .social-sidebar {
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 100;
+        }
+        
+        .social-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: white;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid white;
+        }
+        
+        .social-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.1);
+            transform: translateY(100%);
+            transition: all 0.4s ease;
+        }
+        
+        .social-icon:hover::before {
+            transform: translateY(0);
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
+        
+        .facebook-icon {
+            background: linear-gradient(45deg, #1877F2, #0A58CA);
+        }
+        
+        .whatsapp-icon {
+            background: linear-gradient(45deg, #25D366, #128C7E);
+        }
+        
+        .tiktok-icon {
+            background: linear-gradient(45deg, #000000, #FE2C55, #25F4EE);
+            background-size: 200% 200%;
+            animation: gradientBG 3s ease infinite;
+        }
+        
+        .social-icon i {
+            animation: socialPulse 2s infinite;
+        }
+        
+        @keyframes socialPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        /* Particles Background */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+        
+        .particle {
+            position: absolute;
+            background: var(--neon-green);
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: floatParticle linear infinite;
+        }
+        
+        @keyframes floatParticle {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.7; }
+            100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; }
+        }
+        
+        /* Countdown Timer */
+        .countdown {
+            background: rgba(0,0,0,0.7);
+            border: 2px solid var(--hot-pink);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            max-width: 500px;
+            margin: 20px auto;
+            animation: pulse 2s infinite;
+        }
+        
+        .countdown-title {
+            color: var(--electric-blue);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .countdown-item {
+            background: rgba(0,0,0,0.5);
+            border: 1px solid var(--neon-green);
+            border-radius: 5px;
+            padding: 5px 10px;
+            min-width: 50px;
+        }
+        
+        .countdown-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--neon-green);
+        }
+        
+        .countdown-label {
+            font-size: 0.8rem;
+            color: var(--electric-blue);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                font-size: 2rem;
+                padding: 10px 20px;
+            }
+            
+            .package-container {
+                grid-template-columns: 1fr;
+                padding: 0 15px;
+            }
+            
+            .social-sidebar {
+                left: 10px;
+                gap: 10px;
+            }
+            
+            .social-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .currency-value {
+                font-size: 1.8rem;
+            }
+        }
+        
+        /* Special Effects */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: var(--neon-green);
+            opacity: 0;
+            z-index: 999;
+            animation: confettiFall 5s linear forwards;
+        }
+        
+        @keyframes confettiFall {
+            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+        
+        /* VIP Badge */
+        .vip-badge {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700);
+            color: black;
+            padding: 10px 15px;
+            border-radius: 30px;
+            font-weight: bold;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+            cursor: pointer;
+            z-index: 100;
+            animation: pulse 2s infinite;
+            display: flex;
+            align-items: center;
+        }
+        
+        .vip-badge i {
+            margin-left: 8px;
+            font-size: 1.2rem;
+        }
+        
+        /* Login Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background: linear-gradient(135deg, #111, #222);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            border: 2px solid var(--neon-green);
+            box-shadow: 0 0 30px rgba(57, 255, 20, 0.5);
+            position: relative;
+            animation: modalFadeIn 0.5s ease;
+        }
+        
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            font-size: 1.5rem;
+            color: var(--neon-green);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            transform: rotate(90deg);
+            color: var(--hot-pink);
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        
+        .testimonial-card {
+            background: rgba(0,0,0,0.7);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid var(--electric-blue);
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 4rem;
+            color: rgba(0, 255, 255, 0.1);
+            font-family: serif;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            text-align: left;
+            font-weight: bold;
+            color: var(--neon-green);
+        }
+        
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        
+        .faq-item {
+            background: rgba(0,0,0,0.7);
+            border-radius: 10px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            border: 1px solid var(--hot-pink);
+        }
+        
+        .faq-question {
+            padding: 15px;
+            background: rgba(255, 0, 255, 0.1);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+        }
+        
+        .faq-answer {
+            padding: 0 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 15px;
+            max-height: 500px;
+        }
+        
+        .faq-toggle {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Background Elements -->
+    <div class="floating-icons" id="floatingIcons"></div>
+    <div class="particles" id="particles"></div>
+    
+    <!-- Social Media Sidebar -->
+    <div class="social-sidebar">
+        <a href="https://www.facebook.com/" class="social-icon facebook-icon" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://wa.me/911075221" class="social-icon whatsapp-icon" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://www.tiktok.com/" class="social-icon tiktok-icon" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-tiktok"></i>
+        </a>
+    </div>
+    
+    <!-- VIP Badge -->
+    <div class="vip-badge" onclick="openModal()">
+        <i class="fas fa-crown"></i> VIP Club
+    </div>
+    
+    <!-- Main Content -->
+    <div class="header-container">
+        <div class="header">KIKI STOR</div>
+    </div>
+    
+    <!-- Special Offer Countdown -->
+    <div class="countdown">
+        <div class="countdown-title">عرض خاص لمدة محدودة!</div>
+        <div class="countdown-timer">
+            <div class="countdown-item">
+                <div class="countdown-value" id="countdown-hours">72</div>
+                <div class="countdown-label">ساعة</div>
+            </div>
+            <div class="countdown-item">
+                <div class="countdown-value" id="countdown-minutes">200</div>
+                <div class="countdown-label">دقيقة</div>
+            </div>
+            <div class="countdown-item">
+                <div class="countdown-value" id="countdown-seconds">100</div>
+                <div class="countdown-label">ثانية</div>
+            </div>
+        </div>
+    </div>
+    <div><h1>العرض هوا 1000,متابع بي 16تواصل علي الوتس </h1>
+    <div class="notice">
+        ⚡ نحن نتعامل برصيد المدار فقط ⚡<br>
+        ⏰ توصيل فوري خلال 5-15 دقيقة بعد التأكيد
+    </div>
+    
+    <!-- Balance Packages Section -->
+    <div class="section-title">باقات الرصيد المميزة</div>
+    
+    <div class="package-container">
+        <!-- Basic Package -->
+        <div class="package">
+            <div class="package-badge">الأكثر طلباً</div>
+            <div class="package-header">
+                <div class="package-name">الباقة الأساسية</div>
+                <div class="package-price">60 UC</div>
+            </div>
+            <div class="package-content">
+                <div class="currency-value">10 رصيد</div>
+                <div style="color: var(--electric-blue); font-size: 0.9rem; margin-top: 5px;">+ توصيل فوري</div>
+            </div>
+            <button class="buy-btn" onclick="buyPackage('10 رصيد - 60 UC')">
+                <i class="fas fa-bolt"></i> شراء الآن
+            </button>
+        </div>
+        
+        <!-- Medium Package -->
+        <div class="package gold-package">
+            <div class="package-badge gold-badge">عرض خاص</div>
+            <div class="package-header">
+                <div class="package-name">الباقة الذهبية</div>
+                <div class="package-price">120 UC</div>
+            </div>
+            <div class="package-content">
+                <div class="currency-value">18 رصيد</div>
+                <div style="color: var(--gold); font-size: 0.9rem; margin-top: 5px;">+ هدية مجانية</div>
+            </div>
+            <button class="buy-btn gold-btn" onclick="buyPackage('18 رصيد - 120 UC')">
+                <i class="fas fa-crown"></i> شراء الآن
+            </button>
+        </div>
+        
+        <!-- Premium Package -->
+        <div class="package">
+            <div class="package-header">
+                <div class="package-name">الباقة المميزة</div>
+                <div class="package-price">325 UC</div>
+            </div>
+            <div class="package-content">
+                <div class="currency-value">54 رصيد</div>
+                <div style="color: var(--electric-blue); font-size: 0.9rem; margin-top: 5px;">+ دعم فوري</div>
+            </div>
+            <button class="buy-btn" onclick="buyPackage('54 رصيد - 325 UC')">
+                <i class="fas fa-star"></i> شراء الآن
+            </button>
+        </div>
+        
+        <!-- Golden Package -->
+        <div class="package gold-package">
+            <div class="package-header">
+                <div class="package-name">الباقة الذهبية</div>
+                <div class="package-price">660 UC</div>
+            </div>
+            <div class="package-content">
+                <div class="currency-value">110 رصيد</div>
+                <div style="color: var(--gold); font-size: 0.9rem; margin-top: 5px;">+ 10 رصيد هدية</div>
+            </div>
+            <button class="buy-btn gold-btn" onclick="buyPackage('110 رصيد - 660 UC')">
+                <i class="fas fa-crown"></i> شراء الآن
+            </button>
+        </div>
+        
+        <!-- Diamond Package -->
+        <div class="package diamond-package">
+            <div class="package-badge diamond-badge">VIP</div>
+            <div class="package-header">
+                <div class="package-name">الباقة الماسية</div>
+                <div class="package-price">800 UC</div>
+            </div>
+            <div class="package-content">
+                <div class="currency-value">260 رصيد</div>
+                <div style="color: var(--diamond); font-size: 0.9rem; margin-top: 5px;">+ 20 رصيد هدية</div>
+            </div>
+            <button class="buy-btn diamond-btn" onclick="buyPackage('260 رصيد - 800 UC')">
+                <i class="fas fa-gem"></i> VIP شراء
+            </button>
+        </div>
+        
+        <!-- Special Package -->
+        <div class="package">
+            <div class="package-badge">جديد!</div>
+            <div class="package-header">
+                <div class="package-name">الباقة الإحترافية</div>
+                <div class="package-price">1500 UC</div>
+            </div>
+            <div class="package-content">
+                <div class="currency-value">500 رصيد</div>
+                <div style="color: var(--electric-blue); font-size: 0.9rem; margin-top: 5px;">+ عضوية VIP</div>
+            </div>
+            <button class="buy-btn" onclick="buyPackage('500 رصيد - 1500 UC')">
+                <i class="fas fa-rocket"></i> شراء الآن
+            </button>
+        </div>
+    </div>
+    
+    <!-- TikTok Packages Section -->
+    <div class="section-title">باقات متابعين تيك توك</div>
+    
+    <div class="package-container">
+        <!-- TikTok Package 1 -->
+        <div class="package tiktok-package">
+            <div class="package-header">
+                <div class="package-name">متابعين مع ضمان</div>
+                <div class="package-price">20 رصيد</div>
+            </div>
+            <div class="package-content">
+                <div class="currency-value">1000 متابع</div>
+                <div style="color: #25F4EE; font-size: 0.9rem; margin-top: 5px;">متابعين حقيقيين</div>
+            </div>
+            <button class="buy-btn tiktok-btn" onclick="buyPackage('1000 متابع تيك توك - 20 رصيد')">
+                <i class="fab fa-tiktok"></i> طلب الآن 
+            </button>
+        </div>
+    
+        <!-- TikTok Package 2 -->
+        <div class="package tiktok-package">
+            <div class="package-badge tiktok-badge">الأفضل</div>
+            <div class="package-header">
+                <div class="package-name">حزمة المحترفين</div>
+                <div class="package-price">100 رصيد</div>
+            </div>
+            <div class="package-content">
+                <div class="currency-value">5000 متابع</div>
+                <div style="color: #25F4EE; font-size: 0.9rem; margin-top: 5px;">مضمون لمدة سنة</div>
+            </div>
+            <button class="buy-btn tiktok-btn" onclick="buyPackage('5000 متابع تيك توك - 100 رصيد')">
+                <i class="fab fa-tiktok"></i> طلب الآن 
+            </button>
+        </div>
+        
+        <!-- TikTok Package 3 -->
+        <div class="package tiktok-package">
+            <div class="package-header">
+                <div class="package-name">حزمة المشاهير</div>
+                <div class="package-price">300 رصيد</div>
+            </div>
+            <div class="package-content">
+                <div class="currency-value">15000 متابع</div>
+                <div style="color: #25F4EE; font-size: 0.9rem; margin-top: 5px;">+ زيادة تفاعل</div>
+            </div>
+            <button class="buy-btn tiktok-btn" onclick="buyPackage('15000 متابع تيك توك - 300 رصيد')">
+                <i class="fab fa-tiktok"></i> طلب الآن
+            </button>
+        </div>
+        
+        <!-- TikTok VIP Package -->
+        <div class="package tiktok-package">
+            <div class="package-badge diamond-badge">VIP</div>
+            <div class="package-header">
+                <div class="package-name">الحزمة الأسطورية</div>
+                <div class="package-price">600 رصيد</div>
+            </div>
+            <div class="package-content">
+                <div class="currency-value">30000 متابع</div>
+                <div style="color: #25F4EE; font-size: 0.9rem; margin-top: 5px;">+ لايكات + تعليقات</div>
+            </div>
+            <button class="buy-btn tiktok-btn" onclick="buyPackage('30000 متابع تيك توك - 600 رصيد')">
+                <i class="fas fa-gem"></i> VIP طلب
+            </button>
+        </div>
+    </div>
+    
+    <!-- Testimonials Section -->
+    <div class="section-title">آراء العملاء</div>
+    
+    <div class="testimonials">
+        <div class="package-container">
+            <div class="package">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        تجربة رائعة مع المتجر، الطلب وصل خلال 10 دقائق والخدمة ممتازة. أنصح الجميع بالتجربة.
+                    </div>
+                    <div class="testimonial-author">- تريس ليبيا</div>
+                </div>
+            </div>
+            
+            <div class="package">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        المتابعين اللي حصلتهم حقيقيين والتوصيل سريع جداً. شكراً KIKI STOR على الخدمة المميزة.
+                    </div>
+                    <div class="testimonial-author">- نورا علي</div>
+                </div>
+            </div>
+            
+            <div class="package">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        أفضل متجر تعاملت معه، الأسعار مناسبة والخدمة سريعة. بالتأكيد سأطلب مرة أخرى.
+                    </div>
+                    <div class="testimonial-author">- خالد عبدالله</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- FAQ Section -->
+    <div class="section-title">الأسئلة الشائعة</div>
+    
+    <div class="faq-container">
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                كيف يمكنني الشراء من المتجر؟
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                يمكنك الضغط على أيقونة "شراء الآن" في الباقة التي تريدها وسيتم توجيهك مباشرة إلى واتساب للتواصل مع فريق الدعم.
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                ما هو وقت التوصيل؟
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                وقت التوصيل يتراوح بين 5 إلى 15 دقيقة بعد تأكيد الطلب والدفع.
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                هل المتابعين حقيقيين؟
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                نعم، جميع المتابعين حقيقيين ونقدم ضمان لمدة سنة على الباقات.
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                ما هي طرق الدفع المتاحة؟
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                نتعامل برصيد المدار فقط كطريقة دفع رئيسية.
+            </div>
+        </div>
+    </div>
+    
+    <!-- Contact Section -->
+    <div class="contact">
+        للتواصل مع خدمة العملاء عبر واتساب:
+        <br>
+        <a href="https://wa.me/911075221" class="whatsapp-btn" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-whatsapp"></i> 0911075221
+        </a>
+    </div>
+    
+    <!-- VIP Modal -->
+    <div class="modal" id="vipModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2 style="color: var(--gold); text-align: center; margin-bottom: 20px;">VIP CLUB</h2>
+            <div style="text-align: center; margin-bottom: 20px;">
+                <i class="fas fa-crown" style="font-size: 3rem; color: var(--gold);"></i>
+            </div>
+            <ul style="list-style-type: none; padding: 0;">
+                <li style="margin-bottom: 10px; display: flex; align-items: center;">
+                    <i class="fas fa-check" style="color: var(--neon-green); margin-left: 10px;"></i>
+                    خصومات حصرية تصل إلى 20%
+                </li>
+                <li style="margin-bottom: 10px; display: flex; align-items: center;">
+                    <i class="fas fa-check" style="color: var(--neon-green); margin-left: 10px;"></i>
+                    توصيل فوري خلال 5 دقائق
+                </li>
+                <li style="margin-bottom: 10px; display: flex; align-items: center;">
+                    <i class="fas fa-check" style="color: var(--neon-green); margin-left: 10px;"></i>
+                    دعم فوري على مدار الساعة
+                </li>
+                <li style="margin-bottom: 10px; display: flex; align-items: center;">
+                    <i class="fas fa-check" style="color: var(--neon-green); margin-left: 10px;"></i>
+                    عروض خاصة وحصرية
+                </li>
+                <li style="margin-bottom: 20px; display: flex; align-items: center;">
+                    <i class="fas fa-check" style="color: var(--neon-green); margin-left: 10px;"></i>
+                    هدايا شهرية مجانية
+                </li>
+            </ul>
+            <button class="buy-btn gold-btn" onclick="buyPackage('عضوية VIP')" style="width: 100%;">
+                <i class="fas fa-crown"></i> انضم إلى النادي الآن
+            </button>
+        </div>
+    </div>
+    
+    <script>
+        // Floating Icons Creation
+        function createFloatingIcons() {
+            const container = document.getElementById('floatingIcons');
+            const icons = ['KIKI', 'STOR', '💎', '🔥', '⚡', '💰', '💳', '🛒', '✨', '🎁'];
+            
+            for (let i = 0; i < 30; i++) {
+                const icon = document.createElement('div');
+                icon.className = 'floating-icon';
+                icon.textContent = icons[Math.floor(Math.random() * icons.length)];
+                icon.style.left = Math.random() * 100 + 'vw';
+                icon.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                icon.style.animationDuration = (Math.random() * 15 + 10) + 's';
+                icon.style.animationDelay = Math.random() * 5 + 's';
+                icon.style.color = `hsl(${Math.random() * 360}, 100%, 70%)`;
+                container.appendChild(icon);
+            }
+        }
+        
+        // Particles Background
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const colors = ['#39FF14', '#00FFFF', '#FF00FF', '#FE2C55', '#FFD700', '#b9f2ff'];
+            
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.width = (Math.random() * 5 + 2) + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.animationDuration = (Math.random() * 20 + 10) + 's';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                container.appendChild(particle);
+            }
+        }
+        
+        // Countdown Timer
+        function updateCountdown() {
+            const now = new Date();
+            const endOfDay = new Date();
+            endOfDay.setHours(23, 59, 59, 999);
+            
+            const diff = endOfDay - now;
+            
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('countdown-hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('countdown-minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('countdown-seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+        
+        // Package Purchase Function
+        function buyPackage(package) {
+            createConfetti();
+            const phone = "911075221";
+            const message = `مرحباً، أريد شراء ${package} من متجر KIKI STOR`;
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+        }
+        
+        // Confetti Effect
+        function createConfetti() {
+            const colors = ['#39FF14', '#00FFFF', '#FF00FF', '#FE2C55', '#FFD700', '#b9f2ff'];
+            
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.width = (Math.random() * 10 + 5) + 'px';
+                confetti.style.height = (Math.random() * 10 + 5) + 'px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                document.body.appendChild(confetti);
+                
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+        }
+        
+        // Modal Functions
+        function openModal() {
+            document.getElementById('vipModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            document.getElementById('vipModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // FAQ Toggle
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            faqItem.classList.toggle('active');
+        }
+        
+        // Initialize everything when page loads
+        window.onload = function() {
+            createFloatingIcons();
+            createParticles();
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+            
+            // Close modal if clicked outside
+            window.addEventListener('click', (e) => {
+                if (e.target === document.getElementById('vipModal')) {
+                    closeModal();
+                }
+            });
+        };
+    </script>
+    
+    <!-- Arabic Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</body>
+</html>
